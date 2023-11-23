@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../config/api";
 import { useAuth } from "../contexts/AuthContext";
 import {
@@ -8,84 +8,91 @@ import {
   Button,
   IconButton,
   MenuItem,
+  Container,
 } from "@mui/material/";
 
 const Navbar = () => {
-  const {authenticated, onAuthenticated} = useAuth();
-
+  const { authenticated, onAuthenticated } = useAuth();
+  let token = localStorage.getItem("token");
   let logoutButton;
+  const navigate = useNavigate();
 
-  // const onLogout = () => {
+  const handleLogout = () => {
+    axios
+      .get("/logout", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        localStorage.removeItem("token");
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
 
-  //   axios.get('/logout')
-  //        .then()
-  //        .catch()
-  // }
-
-  if (!authenticated) {
+  if (authenticated) {
     logoutButton = (
-      <Button
-        onClick={() => onAuthenticated(false)}
-        color="inherit"
-      >
+      <Button onClick={handleLogout} color="inherit">
         Logout
       </Button>
     );
   } else {
     logoutButton = (
-      <Button
-        onClick={() => onAuthenticated(true)}
-        color="inherit"
-        component={Link}
-        to="/"
-      >
+      <Button onClick={navigate("/")} color="inherit">
         Login
       </Button>
     );
   }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            component={Link}
-            to="/"
-          >
-            CA-2
-          </IconButton>
-          <MenuItem>
-            <Button
+        <Container>
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
               color="inherit"
-              textAlign="center"
+              aria-label="menu"
+              sx={{ mr: 2 }}
               component={Link}
-              to="/courses"
+              to="/"
             >
-              COURSES
-            </Button>
-            <Button
-              color="inherit"
-              textAlign="center"
-              component={Link}
-              to="/lecturers"
-            >
-              LECTURERS
-            </Button>
-            <Button
-              color="inherit"
-              textAlign="center"
-              component={Link}
-              to="/enrolments"
-            >
-              ENROLEMENTS{" "}
-            </Button>
-          </MenuItem>
-          {logoutButton}
-        </Toolbar>
+              CA-2
+            </IconButton>
+            <MenuItem>
+              <Button
+                color="inherit"
+                textAlign="center"
+                component={Link}
+                to="/courses"
+              >
+                COURSES
+              </Button>
+              <Button
+                color="inherit"
+                textAlign="center"
+                component={Link}
+                to="/lecturers"
+              >
+                LECTURERS
+              </Button>
+              <Button
+                color="inherit"
+                textAlign="center"
+                component={Link}
+                to="/enrolments"
+              >
+                ENROLEMENTS{" "}
+              </Button>
+            </MenuItem>
+            {logoutButton}
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );

@@ -35,7 +35,6 @@ const LoginForm = () => {
       .then((response) => {
         console.log(response.data.token);
         onAuthenticated(true, response.data.token);
-       // authenticated = true;
       })
       .catch((err) => {
         console.error(err);

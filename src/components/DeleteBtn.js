@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from '../config/api';
+import { Button } from '@mui/material';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 //import { useNavigate } from 'react-router-dom';
 
 const DeleteBtn = (resource, id, deleteCallback) => {
@@ -28,8 +30,9 @@ const DeleteBtn = (resource, id, deleteCallback) => {
     };
 
     return(
-        <button
-        onClick={onDelete}>{(isLoading)?"Deleting...":"Delete"}</button>
+        <Button onClick={onDelete} startIcon={<DeleteRoundedIcon />}>
+            {(isLoading)?"Deleting...":"Delete"}
+        </Button>
     );
 };
 

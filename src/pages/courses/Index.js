@@ -39,18 +39,21 @@ const Index = (props) => {
 
       const coursesList = courses.map((course) => {
         return (
+          <>
           <CourseCard
             key={course.id}
             course={course}
             authenticated={props.authenticated}
             deleteCallback={removeCourse}
           />
+          <br/>
+          </>
         );
       });
     
     return(
         <>
-        Helllo from courses
+        <h1>All Courses</h1>
         {coursesList}
         </>
     )

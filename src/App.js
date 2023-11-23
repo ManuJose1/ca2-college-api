@@ -9,6 +9,7 @@ import { Container } from "@mui/material";
 //Pages
 import Home from "./pages/Home";
 import CoursesIndex from "./pages/courses/Index";
+import CoursesShow from "./pages/courses/Show";
 import LecturersIndex from "./pages/lecturers/Index";
 import EnrolmentsIndex from "./pages/enrolments/Index";
 
@@ -22,7 +23,6 @@ const App = () => {
   }, []);
 
   //Protected routes
-  // <Route path="/courses" element={<CoursesIndex/>} />
   // <Route path="/courses/:id" element={<CoursesIndex/>} />
   // <Route path="/courses/id/edit" element={<CoursesIndex/>} />
 
@@ -35,7 +35,10 @@ const App = () => {
             <Route path="/" element={<Home />} />
 
             <Route path="/courses" element={<CoursesIndex/>} />
+            <Route path="/courses/:id" element={<CoursesShow/>} />
             <Route path="/lecturers" element={<LecturersIndex/>} />
+            <Route path="/courses/id/edit" element={<CoursesIndex/>} />
+
             <Route path="/enrolments" element={<EnrolmentsIndex/>} />
           </Routes>
         </Container>
