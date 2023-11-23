@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {useState, useEffect} from 'react';
+import {useAuth} from './contexts/AuthContext';
 
-function App() {
+//Components
+import Navbar from "./components/Navbar";
+import { Container } from "@mui/material";
+
+//Pages
+import Home from "./pages/Home";
+import CoursesIndex from "./pages/courses/Index";
+import LecturersIndex from "./pages/lecturers/Index";
+import EnrolmentsIndex from "./pages/enrolments/Index";
+
+const App = () => {
+  const {authenticated, onAuthenticated} = useAuth();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      onAuthenticated(true);
+    }
+  }, []);
+
+  //Protected routes
+  // <Route path="/courses" element={<CoursesIndex/>} />
+  // <Route path="/courses/:id" element={<CoursesIndex/>} />
+  // <Route path="/courses/id/edit" element={<CoursesIndex/>} />
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/courses" element={<CoursesIndex/>} />
+            <Route path="/lecturers" element={<LecturersIndex/>} />
+            <Route path="/enrolments" element={<EnrolmentsIndex/>} />
+          </Routes>
+        </Container>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
