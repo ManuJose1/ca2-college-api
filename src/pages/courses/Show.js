@@ -11,6 +11,7 @@ import { useParams, Link } from "react-router-dom";
 import DeleteBtn from "../../components/DeleteBtn";
 import { useEffect, useState } from "react";
 import axios from "../../config/api";
+import EnrolmentCard from "../../components/EnrolmentCard";
 
 const Show = () => {
   const { id } = useParams();
@@ -35,43 +36,49 @@ const Show = () => {
 
   if (!course) return <h3>This course is no longer available</h3>;
 
+  const enrolmentList = course.enrolments.map((enrolment)=>{
+    return(
+      <EnrolmentCard
+      key={enrolment.id}
+      />
+    )
+  })
+
   return (
     <>
+      <h1>Course Information</h1>
       <Card>
-        <Grid container spacing={2}>
-          <CardContent>
-            <Grid item xs={8}>
-              <Typography gutterBottom variant="h4" component="div">
-                {course.title} {course.code}
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h5" color="text.secondary">
-                Points: {course.points}
-              </Typography>
-              <Typography variant="h5" color="text.secondary">
-                Level: {course.level}
-              </Typography>
-            </Grid>
-            <Typography variant="body2" color="text.secondary">
-              {course.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button component={Link} to={`/courses/${course.id}`}>
-              Learn More
-            </Button>
-            <Button
-              component={Link}
-              to={`/courses/${course.id}/edit`}
-              startIcon={<EditIcon />}
-            >
-              Edit
-            </Button>
-            <DeleteBtn />
-          </CardActions>
-        </Grid>
+        <CardContent>
+          <Typography gutterBottom variant="h4" component="div">
+            {course.title} {course.code}
+          </Typography>
+          <Typography variant="h5" color="text.secondary">
+            Points: {course.points}
+          </Typography>
+          <Typography variant="h5" color="text.secondary">
+            Level: {course.level}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {course.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button component={Link} to={`/courses/${course.id}`}>
+            Learn More
+          </Button>
+          <Button
+            component={Link}
+            to={`/courses/${course.id}/edit`}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
+          <DeleteBtn />
+        </CardActions>
       </Card>
+      <h1>Enrolments</h1>
+      {/* {enrolmentList} */}
+
     </>
   );
 };
