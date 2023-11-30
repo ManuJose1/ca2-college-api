@@ -76,9 +76,8 @@ const Show = () => {
           <DeleteBtn />
         </CardActions>
       </Card>
-      <h1>Enrolments</h1>
-      {/* {enrolmentList} */}
-
+      {/* <h1>Enrolments</h1>
+      {enrolmentList} */}
     </>
   );
 };
