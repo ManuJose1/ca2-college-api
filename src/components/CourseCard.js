@@ -15,10 +15,10 @@ const CourseCard = ({ course, authenticated, deleteCallback }) => {
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography variant="h5" component="div">
-            {course.title} {course.code}
+          {course.code} - {course.title}
           </Typography>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {course.description.substring(0, 120)}...
+            {course.description}
           </Typography>
         </CardContent>
         <CardActions>

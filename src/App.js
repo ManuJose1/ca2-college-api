@@ -10,6 +10,7 @@ import { Container } from "@mui/material";
 import Home from "./pages/Home";
 import CoursesIndex from "./pages/courses/Index";
 import CoursesShow from "./pages/courses/Show";
+import CoursesCreate from "./pages/courses/Create";
 import LecturersIndex from "./pages/lecturers/Index";
 import EnrolmentsIndex from "./pages/enrolments/Index";
 
@@ -36,6 +37,7 @@ const App = () => {
 
             <Route path="/courses" element={<CoursesIndex/>} />
             <Route path="/courses/:id" element={<CoursesShow/>} />
+            <Route path="/courses/create" element={<CoursesCreate/>}/>
             <Route path="/lecturers" element={<LecturersIndex/>} />
             <Route path="/courses/id/edit" element={<CoursesIndex/>} />
 

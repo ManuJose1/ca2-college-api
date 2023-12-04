@@ -3,6 +3,10 @@ import axios from "../../config/api";
 import Loading from "../../components/Loading";
 import CourseCard from "../../components/CourseCard";
 import { useAuth } from "../../contexts/AuthContext";
+import Button from "@mui/material/Button";
+import Add from "@mui/icons-material/Add";
+import { Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { authenticated } = useAuth();
@@ -50,7 +54,17 @@ const Index = () => {
 
   return (
     <>
-      <h1>All Courses</h1>
+      <Grid container alignItems="center">
+        <h1>All Courses</h1>
+      </Grid>
+      <Grid container justifyContent="flex-end">
+        <Button startIcon={<Add />} size="md" component={Link} to={'/courses/create'}>
+          Create Course
+        </Button>
+      </Grid>
+
+      <br/>
+
       {coursesList}
     </>
   );
