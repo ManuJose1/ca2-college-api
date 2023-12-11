@@ -36,6 +36,7 @@ const Index = () => {
     setCourses(updatedCourses);
   };
 
+
   if (!courses) return <Loading />;
 
   const coursesList = courses.map((course) => {

@@ -7,7 +7,7 @@ const Home = () => {
     return (
       <LoginForm authenticated={authenticated} onAuthenticated={onAuthenticated} />
     );
-  }else{
+  }else if (authenticated){
     return(
       <>
       <h1>You are logged in !</h1>

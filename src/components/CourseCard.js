@@ -9,7 +9,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
 import DeleteBtn from "./DeleteBtn";
 
-const CourseCard = ({ course, authenticated, deleteCallback }) => {
+const CourseCard = ({ course, authenticated, deleteCallback, removeCourse }) => {
+
+
   return (
     <>
       <Card sx={{ minWidth: 275 }}>
@@ -32,7 +34,7 @@ const CourseCard = ({ course, authenticated, deleteCallback }) => {
           >
             Edit
           </Button>
-          <DeleteBtn resource='courses' id={course.id} deleteCallback={course.id}/>
+          <DeleteBtn resource='courses' id={course.id} deleteCallback={removeCourse}/>
         </CardActions>
       </Card>
     </>

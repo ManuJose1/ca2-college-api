@@ -25,9 +25,10 @@ const Navbar = () => {
         },
       })
       .then((response) => {
-        console.log(response);
-        localStorage.removeItem("token");
-        window.location.reload();
+        console.log(localStorage);
+        localStorage.removeItem(token);
+        onAuthenticated(false);
+        navigate('/');
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -40,7 +41,7 @@ const Navbar = () => {
         Logout
       </Button>
     );
-  } else {
+  } else if (!authenticated) {
     logoutButton = (
       <Button onClick={navigate("/")} color="inherit">
         Login
@@ -67,7 +68,7 @@ const Navbar = () => {
             <MenuItem>
               <Button
                 color="inherit"
-                textAlign="center"
+               // textAlign="center"
                 component={Link}
                 to="/courses"
               >
@@ -75,7 +76,7 @@ const Navbar = () => {
               </Button>
               <Button
                 color="inherit"
-                textAlign="center"
+                //textAlign="center"
                 component={Link}
                 to="/lecturers"
               >
@@ -83,11 +84,11 @@ const Navbar = () => {
               </Button>
               <Button
                 color="inherit"
-                textAlign="center"
+                //textAlign="center"
                 component={Link}
                 to="/enrolments"
               >
-                ENROLEMENTS{" "}
+                ENROLEMENTS
               </Button>
             </MenuItem>
             {logoutButton}

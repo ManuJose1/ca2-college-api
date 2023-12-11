@@ -135,11 +135,11 @@ const Create = () => {
           name="level"
           onChange={handleForm}
           error={errors.level}
-          helperText={errors.points?.message}
+          helperText={errors.level?.message}
         />
       </div>
 
-      <Button variant="contained" onClick={submitForm}>
+      <Button className='form-group' variant="contained" onClick={submitForm}>
         Submit
       </Button>
     </Grid>
