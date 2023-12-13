@@ -33,6 +33,7 @@ const Navbar = () => {
       .catch((err) => {
         console.log(err.response.data);
       });
+
   };
 
   if (authenticated) {

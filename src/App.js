@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {useState, useEffect} from 'react';
-import {useAuth} from './contexts/AuthContext';
+import { useState, useEffect } from "react";
+import { useAuth } from "./contexts/AuthContext";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -11,16 +11,16 @@ import Home from "./pages/Home";
 import CoursesIndex from "./pages/courses/Index";
 import CoursesShow from "./pages/courses/Show";
 import CoursesCreate from "./pages/courses/Create";
+import CoursesEdit from "./pages/courses/Edit";
 import LecturersIndex from "./pages/lecturers/Index";
 import EnrolmentsIndex from "./pages/enrolments/Index";
 
 const App = () => {
-  const {authenticated, onAuthenticated} = useAuth();
+  const { authenticated, onAuthenticated } = useAuth();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      onAuthenticated(true);
-    }
+    localStorage.removeItem("token");
+    onAuthenticated(false);
   }, []);
 
   //Protected routes
@@ -35,13 +35,14 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            <Route path="/courses" element={<CoursesIndex/>} />
-            <Route path="/courses/:id" element={<CoursesShow/>} />
-            <Route path="/courses/create" element={<CoursesCreate/>}/>
-            <Route path="/lecturers" element={<LecturersIndex/>} />
-            <Route path="/courses/id/edit" element={<CoursesIndex/>} />
+            <Route path="/courses" element={<CoursesIndex />} />
+            <Route path="/courses/:id" element={<CoursesShow />} />
+            <Route path="/courses/create" element={<CoursesCreate />} />
+            <Route path="/courses/:id/edit" element={<CoursesEdit />} />
 
-            <Route path="/enrolments" element={<EnrolmentsIndex/>} />
+            <Route path="/lecturers" element={<LecturersIndex />} />
+
+            <Route path="/enrolments" element={<EnrolmentsIndex />} />
           </Routes>
         </Container>
       </Router>
