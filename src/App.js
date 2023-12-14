@@ -12,8 +12,16 @@ import CoursesIndex from "./pages/courses/Index";
 import CoursesShow from "./pages/courses/Show";
 import CoursesCreate from "./pages/courses/Create";
 import CoursesEdit from "./pages/courses/Edit";
+
 import LecturersIndex from "./pages/lecturers/Index";
+import LecturersShow from "./pages/lecturers/Show";
+import LecturersCreate from "./pages/lecturers/Create";
+import LecturersEdit from "./pages/lecturers/Edit";
+
 import EnrolmentsIndex from "./pages/enrolments/Index";
+import EnrolmentsShow from "./pages/enrolments/Show";
+import EnrolmentsCreate from "./pages/enrolments/Create";
+import EnrolmentsEdit from "./pages/enrolments/Edit";
 
 const App = () => {
   const { authenticated, onAuthenticated } = useAuth();
@@ -22,10 +30,6 @@ const App = () => {
     localStorage.removeItem("token");
     onAuthenticated(false);
   }, []);
-
-  //Protected routes
-  // <Route path="/courses/:id" element={<CoursesIndex/>} />
-  // <Route path="/courses/id/edit" element={<CoursesIndex/>} />
 
   return (
     <>
@@ -41,8 +45,14 @@ const App = () => {
             <Route path="/courses/:id/edit" element={<CoursesEdit />} />
 
             <Route path="/lecturers" element={<LecturersIndex />} />
+            <Route path="/lecturers/:id" element={<CoursesShow />} />
+            <Route path="/lecturers/create" element={<CoursesCreate />} />
+            <Route path="/lecturers/:id/edit" element={<CoursesEdit />} />
 
             <Route path="/enrolments" element={<EnrolmentsIndex />} />
+            <Route path="/enrolments/:id" element={<CoursesShow />} />
+            <Route path="/enrolments/create" element={<CoursesCreate />} />
+            <Route path="/enrolments/:id/edit" element={<CoursesEdit />} />
           </Routes>
         </Container>
       </Router>
