@@ -8,6 +8,7 @@ import { Container } from "@mui/material";
 
 //Pages
 import Home from "./pages/Home";
+
 import CoursesIndex from "./pages/courses/Index";
 import CoursesShow from "./pages/courses/Show";
 import CoursesCreate from "./pages/courses/Create";
