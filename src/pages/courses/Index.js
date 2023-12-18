@@ -36,7 +36,6 @@ const Index = () => {
     setCourses(updatedCourses);
   };
 
-
   if (!courses) return <Loading />;
 
   const coursesList = courses.map((course) => {
@@ -59,12 +58,17 @@ const Index = () => {
         <h1>All Courses</h1>
       </Grid>
       <Grid container justifyContent="flex-end">
-        <Button startIcon={<Add />} size="md" component={Link} to={'/courses/create'}>
+        <Button
+          startIcon={<Add />}
+          size="md"
+          component={Link}
+          to={"/courses/create"}
+        >
           Create Course
         </Button>
       </Grid>
 
-      <br/>
+      <br />
 
       {coursesList}
     </>

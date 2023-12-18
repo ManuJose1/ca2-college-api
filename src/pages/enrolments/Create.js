@@ -7,6 +7,15 @@ import Button from "@mui/material/Button";
 import { Slider, Typography } from "@mui/material";
 
 const Create = () => {
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({
+    title: "",
+    code: "",
+    description: "",
+    points: "",
+    level: "",
+  });
   return <></>;
 };
 

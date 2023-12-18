@@ -46,14 +46,14 @@ const App = () => {
             <Route path="/courses/:id/edit" element={<CoursesEdit />} />
 
             <Route path="/lecturers" element={<LecturersIndex />} />
-            <Route path="/lecturers/:id" element={<CoursesShow />} />
-            <Route path="/lecturers/create" element={<CoursesCreate />} />
-            <Route path="/lecturers/:id/edit" element={<CoursesEdit />} />
+            <Route path="/lecturers/:id" element={<LecturersShow />} />
+            <Route path="/lecturers/create" element={<LecturersCreate />} />
+            <Route path="/lecturers/:id/edit" element={<LecturersEdit />} />
 
             <Route path="/enrolments" element={<EnrolmentsIndex />} />
-            <Route path="/enrolments/:id" element={<CoursesShow />} />
-            <Route path="/enrolments/create" element={<CoursesCreate />} />
-            <Route path="/enrolments/:id/edit" element={<CoursesEdit />} />
+            <Route path="/enrolments/:id" element={<EnrolmentsShow />} />
+            <Route path="/enrolments/create" element={<EnrolmentsCreate />} />
+            <Route path="/enrolments/:id/edit" element={<EnrolmentsEdit />} />
           </Routes>
         </Container>
       </Router>
