@@ -55,7 +55,7 @@ const Index = () => {
   return (
     <>
       <Grid container alignItems="center">
-        <h1>All Courses</h1>
+        <h1>All Lecturers</h1>
       </Grid>
       <Grid container justifyContent="flex-end">
         <Button
