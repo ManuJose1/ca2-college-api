@@ -73,7 +73,7 @@ const Edit = () => {
       let token = localStorage.getItem("token");
 
       axios
-        .put("/courses", form, {
+        .put(`/courses/${id}`, form, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
