@@ -9,28 +9,28 @@ const DeleteBtn = (resource, id, deleteCallback) => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState('');
 
-    const onDelete = () => {
-        console.log('deleted');
-        setIsLoading(true); 
-        let token = localStorage.getItem('token');
+    // const onDelete = () => {
+    //     console.log('deleted');
+    //     setIsLoading(true); 
+    //     let token = localStorage.getItem('token');
 
-        axios.delete(`${resource}/${id}`,{
-            headers:{
-                Authorization: `Bearer ${token}`,
-            }
-        })
-             .then(response=>{
-                console.log(response.data)
-                deleteCallback(id);
-                navigate(`/${resource}`)
-             })
-             .catch(err=>{
-                console.log(err.response.data)
-             })
-    };
+    //     axios.delete(`${resource}/${id}`,{
+    //         headers:{
+    //             Authorization: `Bearer ${token}`,
+    //         }
+    //     })
+    //          .then(response=>{
+    //             console.log(response.data)
+    //             deleteCallback(id);
+    //             navigate(`/${resource}`)
+    //          })
+    //          .catch(err=>{
+    //             console.log(err.response.data)
+    //          })
+    // };
 
     return(
-        <Button onClick={onDelete} startIcon={<DeleteRoundedIcon />}>
+        <Button startIcon={<DeleteRoundedIcon />}>
             {isLoading?"Deleting...":"Delete"}
         </Button>
     );

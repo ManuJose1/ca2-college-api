@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Add from "@mui/icons-material/Add";
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
+import DeleteBtn from "../../components/DeleteBtn";
 
 const Index = () => {
   const { authenticated } = useAuth();
@@ -40,15 +41,17 @@ const Index = () => {
 
   const coursesList = courses.map((course) => {
     return (
-      <>
+      <div>
         <CourseCard
           key={course.id}
           course={course}
           authenticated={authenticated}
-          deleteCallback={removeCourse}
+          //deleteCallback={removeCourse}
         />
+          
+
         <br />
-      </>
+      </div>
     );
   });
 

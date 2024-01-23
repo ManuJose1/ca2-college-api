@@ -24,19 +24,18 @@ import {
               {lecturer.phone}
             </Typography>
           </CardContent>
-          {/* <CardActions>
-            <Button component={Link} to={`/courses/${enrolment.id}`}>
+          <CardActions>
+            <Button component={Link} to={`/lecturers/${lecturer.id}`}>
               Learn More
             </Button>
             <Button
               component={Link}
-              to={`/courses/${enrolment.id}/edit`}
+              to={`/lecturers/${lecturer.id}/edit`}
               startIcon={<EditIcon />}
             > 
               Edit
             </Button>
-            <DeleteBtn />
-          </CardActions> */}
+          </CardActions>
         </Card>
       </>
     );

@@ -34,7 +34,6 @@ const CourseCard = ({ course, authenticated, deleteCallback, removeCourse }) => 
           >
             Edit
           </Button>
-          <DeleteBtn resource='courses' id={course.id} deleteCallback={removeCourse}/>
         </CardActions>
       </Card>
     </>
